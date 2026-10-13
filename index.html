@@ -1,134 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Online Phone Shop BD</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="script.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Phone Shop BD</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-  <header>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="About.html">About</a></li>
-        <li><a href="services.html">Services</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-      <div class="nav-buttons">
-        <a href="login.html" class="btn-login">Login</a>
-        <a href="register.html" class="btn-register">Register</a>
-      </div>
-    </nav>
-  </header>
-
-  <div class="notice-bar">
-    <div class="notice-text">
-      🔥চলছে-ধামাকা ৬৫% ডিসকাউন্ট অফার ! | 🎉 🛒24 ঘণ্টার মধ্য বাংলাদেশের যে কোনো প্রান্তে হোম ডেলিভারি মাধ্যমে পৌঁছায় দেওয়া ☑️৬মাসের রিপ্লেসমেন্ট গ্যারান্টি ১বছরের ওয়ারেন্টি। হয়। অগ্রিম ৫৫০ দিলে ১০% ক্যাশ ফুরিয়ে যাওয়ার আগেই অর্ডার করুনব্যাক| 📞 Contact us: ☎️01855996933
-    </div>
-  </div>
-
-  <section class="product-section">
-    <h2 class="section-title">Welcome to Online Phone Shop BD</h2>
-
-    <!-- Samsung -->
-    <h3 class="category-title">Samsung</h3>
-    <div id="samsung-grid" class="card-grid"></div>
-
-    <!-- Redmi / Xiaomi -->
-    <h3 class="category-title">Redmi / Xiaomi</h3>
-    <div id="redmi-grid" class="card-grid"></div>
-
-    <!-- Realme -->
-    <h3 class="category-title">Realme</h3>
-    <div id="realme-grid" class="card-grid"></div>
-
-    <!-- Vivo -->
-    <h3 class="category-title">Vivo</h3>
-    <div id="vivo-grid" class="card-grid"></div>
-
-    <!-- Oppo -->
-    <h3 class="category-title">Oppo</h3>
-    <div id="oppo-grid" class="card-grid"></div>
-
-    <!-- iPhone -->
-    <h3 class="category-title">Apple iPhone</h3>
-    <div id="iphone-grid" class="card-grid"></div>
-
-  </section>
-
-  <div class="about-card">
-    <h3>📞 যোগাযোগ করুন</h3>
-    <p><b>Email:</b> mdsamrathossinbd@gmail.com</p>
-    <p><b>Phone:</b> 01855996933</p>
-    <p><b>শোরুম ঠিকানা:</b> এলিফ্যান্ট রোড, মোতালেব প্লাজা, ৬ষ্ঠ তলা, ১৫ নং দোকান, ঢাকা-১২০৫</p>
-    <a href="https://maps.google.com/?q=Motaleb Plaza Dhaka" target="_blank" class="btn-submit" style="text-decoration:none; display:inline-block; margin-top:10px;">
-      📍 Google Map এ দেখুন
-    </a>
-  </div>
-
-  <footer>
-    <p>© 2026 Online Phone Shop BD. All rights reserved.</p>
-  </footer>
-
-  <!-- ফায়ারবেস ও ডাটা লোড করার স্ক্রিপ্ট -->
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-    import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
-
-    const firebaseConfig = {
-      apiKey: "AIzaSyBsdBnyUkVTPByXtWQbNDBkwvNYW5REYlc",
-      authDomain: "testing-6d809.firebaseapp.com",
-      databaseURL: "https://testing-6d809-default-rtdb.firebaseio.com",
-      projectId: "testing-6d809",
-      storageBucket: "testing-6d809.firebasestorage.app",
-      messagingSenderId: "680148609310",
-      appId: "1:680148609310:web:4323b16000e54e08ae410f"
-    };
-
-    const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app);
-
-    async function loadProducts() {
-      try {
-        const querySnapshot = await getDocs(collection(db, "products"));
-        
-        const grids = {
-          samsung: document.getElementById("samsung-grid"),
-          redmi: document.getElementById("redmi-grid"),
-          realme: document.getElementById("realme-grid"),
-          vivo: document.getElementById("vivo-grid"),
-          oppo: document.getElementById("oppo-grid"),
-          iphone: document.getElementById("iphone-grid")
-        };
-
-        Object.values(grids).forEach(grid => {
-          if (grid) grid.innerHTML = "";
-        });
-
-        querySnapshot.forEach((doc) => {
-          const p = doc.data();
-          const cardHTML = `
-            <div class="card">
-              <img src="${p.image}" alt="${p.name}">
-              <h4>${p.name}</h4>
-              <p class="price">${p.price}</p>
-              <a href="#" class="btn-buy">Buy Now</a>
+    <header>
+        <nav>
+            <div class="logo">📱 Phone Shop BD</div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-buttons">
+                <a href="login.html" class="btn-login">Login</a>
+                <a href="register.html" class="btn-register">Register</a>
             </div>
-          `;
+        </nav>
+    </header>
 
-          if (grids[p.category]) {
-            grids[p.category].innerHTML += cardHTML;
-          }
-        });
-      } catch (error) {
-        console.error("Error loading products: ", error);
-      }
-    }
+    <div class="notice-bar">
+        <div class="notice-text">🔥 চলছে ধামাকা ৬৫% ডিসকাউন্ট অফার! | ২৪ ঘণ্টার মধ্যে বাংলাদেশের যে কোনো প্রান্তে হোম ডেলিভারি। আজই অর্ডার করুন!</div>
+    </div>
 
-    loadProducts();
-  </script>
+    <main class="product-section">
+        <h1 class="section-title">আমাদের মোবাইল কালেকশন</h1>
+        <div class="card-grid" id="product-grid">
+            <!-- ফায়ারবেস বা এডমিন প্যানেল থেকে ডায়নামিক প্রোডাক্ট এখানে লোড হবে -->
+        </div>
+    </main>
+
+    <footer>
+        <p>📞 যোগাযোগ করুন: 01855996933 | Email: mdsamrathossinbd@gmail.com</p>
+        <p>© 2026 Online Phone Shop BD. All rights reserved.</p>
+    </footer>
+    <script type="module" src="JavaScript.js"></script>
 </body>
 </html>
