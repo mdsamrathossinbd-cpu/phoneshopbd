@@ -1,100 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin Panel - Phone Shop BD</title>
-  <link rel="stylesheet" href="style.css">
-  <style>
-    .admin-container { max-width: 600px; margin: 40px auto; padding: 25px; background: #fff; border-radius: 8px; box-shadow: 0 0 15px rgba(0,0,0,0.1); }
-    .admin-container h2 { margin-bottom: 20px; color: #333; }
-    .admin-container label { display: block; margin-top: 10px; font-weight: bold; }
-    .admin-container input, .admin-container select { width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; }
-    .admin-container button { margin-top: 20px; background: #2ed573; color: white; border: none; padding: 12px 20px; cursor: pointer; border-radius: 5px; font-weight: bold; width: 100%; font-size: 16px; }
-    .admin-container button:hover { background: #26af5f; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Phone Shop BD</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
-
-  <header>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="admin.html">Admin Panel</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <div class="admin-container">
-    <h2>🛠️ নতুন ফোন অ্যাড করার প্যানেল</h2>
-    <form id="product-form">
-      <label>ফোনের নাম:</label>
-      <input type="text" id="phone-name" placeholder="যেমন: Galaxy S24 Ultra" required>
-
-      <label>ক্যাটাগরি সিলেক্ট করুন:</label>
-      <select id="phone-category" required>
-        <option value="samsung">Samsung</option>
-        <option value="redmi">Redmi / Xiaomi</option>
-        <option value="realme">Realme</option>
-        <option value="vivo">Vivo</option>
-        <option value="oppo">Oppo</option>
-        <option value="iphone">Apple iPhone</option>
-      </select>
-
-      <label>দাম (টাকা):</label>
-      <input type="text" id="phone-price" placeholder="যেমন: ৳ 4,750" required>
-
-      <label>ছবির লিংক (Image URL):</label>
-      <input type="text" id="phone-image" placeholder="ছবির ডাইরেক্ট লিংক দিন" required>
-
-      <button type="submit">প্রোডাক্ট সেভ করুন</button>
-    </form>
-  </div>
-
-  <!-- ফায়ারবেস ও ডাটা সেভ করার স্ক্রিপ্ট -->
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-    import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
-
-    const firebaseConfig = {
-      apiKey: "AIzaSyBsdBnyUkVTPByXtWQbNDBkwvNYW5REYlc",
-      authDomain: "testing-6d809.firebaseapp.com",
-      databaseURL: "https://testing-6d809-default-rtdb.firebaseio.com",
-      projectId: "testing-6d809",
-      storageBucket: "testing-6d809.firebasestorage.app",
-      messagingSenderId: "680148609310",
-      appId: "1:680148609310:web:4323b16000e54e08ae410f"
-    };
-
-    const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app);
-
-    const productForm = document.getElementById("product-form");
-    if (productForm) {
-      productForm.addEventListener("submit", async (e) => {
-        e.preventDefault();
-
-        const name = document.getElementById("phone-name").value;
-        const category = document.getElementById("phone-category").value;
-        const price = document.getElementById("phone-price").value;
-        const image = document.getElementById("phone-image").value;
-
-        try {
-          await addDoc(collection(db, "products"), {
-            name: name,
-            category: category,
-            price: price,
-            image: image,
-            createdAt: new Date()
-          });
-          alert("সফলভাবে নতুন ফোন যোগ করা হয়েছে!");
-          productForm.reset();
-        } catch (error) {
-          console.error("Error adding document: ", error);
-          alert("সমস্যা হয়েছে, আবার চেষ্টা করুন।");
-        }
-      });
-    }
-  </script>
+<body class="form-body">
+    <div class="form-container" style="width: 500px;">
+        <h2>🛠️ এডমিন প্যানেল</h2>
+        <div id="admin-msg" style="color: #fad0c4; margin-bottom: 15px; text-align: center;"></div>
+        <form id="admin-product-form">
+            <div class="input-group">
+                <label>প্রোডাক্টের নাম</label>
+                <input type="text" id="p-name" placeholder="যেমন: iPhone 16 Pro" required>
+            </div>
+            <div class="input-group">
+                <label>মূল্য (টাকা)</label>
+                <input type="text" id="p-price" placeholder="যেমন: ৳ 75,000" required>
+            </div>
+            <div class="input-group">
+                <label>ছবির ফাইলের নাম বা লিংক</label>
+                <input type="text" id="p-img" placeholder="যেমন: iphone_14.jpeg" required>
+            </div>
+            <button type="submit" class="btn-submit">প্রোডাক্ট যোগ করুন</button>
+        </form>
+        <div class="form-link" style="margin-top: 20px;">
+            <a href="index.html">← সাইটে ফিরে যান</a>
+        </div>
+    </div>
+    <script type="module" src="JavaScript.js"></script>
 </body>
 </html>
